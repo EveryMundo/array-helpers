@@ -2,7 +2,7 @@
 
 describe('flat10', () => {
   const { expect } = require('chai');
-  const { flat10 } = require('../flat10');
+  const { flat10 } = require('../');
 
   context('When dealing with arrays', () => {
     it('should correctly flatten all levels of the array', () => {
