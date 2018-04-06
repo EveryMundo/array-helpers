@@ -18,6 +18,62 @@ describe('List', () => {
     expect(instance).to.be.instanceof(Array);
   });
 
+  it('should have a property named ify', () => {
+    expect(List.ify).to.be.instanceof(Function);
+  });
+
+  context('List.ify', () => {
+    it('should return an instance of List', () => {
+      const result = List.ify();
+
+      expect(result).to.be.instanceof(List);
+    });
+
+    context('when receiving a List object as argument', () => {
+      it('should return the very same object', () => {
+        const input  = new List(1, 2, 3);
+        const result = List.ify(input);
+
+        expect(result).to.equal(input, `result === input is ${result === input}`);
+      });
+    });
+
+    context('when receiving a String', () => {
+      it('should return a list containing the whole string as one single element', () => {
+        const input    = 'Some String';
+        const result   = List.ify(input);
+        const expected = new List(input);
+
+        expect(result).to.deep.equal(expected);
+      });
+    });
+
+    context('when receiving an Array', () => {
+      it('should return a list that mirrors the array', () => {
+        const input    = [1, 2, 3];
+        const result   = List.ify(input);
+        const expected = input;
+
+        expect(result).to.be.instanceof(List);
+        expect(result).to.deep.equal(expected);
+      });
+    });
+
+    context('when receiving anything else', () => {
+      it('should return a list with the input as the single item in it', () => {
+        const inputs = [true, 1, false, 0, '', {name: true}, new Date()];
+
+        inputs.forEach((input) => {
+          const result   = List.ify(input);
+          const expected = new List(input);
+
+          expect(result).to.be.instanceof(List);
+          expect(result).to.deep.equal(expected);
+        });
+      });
+    });
+  });
+
   context('Its instance', () => {
     it('should have property firstItem', () => {
       const instance = new List();
