@@ -4,10 +4,17 @@
   "description": "Helpers to handle array operations in a more elegant way",
   "main": "index.js",
   "scripts": {
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "check-lint": "eslint *.js lib/*.js test/*.js routes/*.js",
     "cover": "istanbul cover _mocha",
     "fix-lint": "eslint --fix *.js classes/*.js test/*.js routes/*.js",
     "test": "mocha"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run check-lint && npm test",
+      "pre-push": "npm run cover && npm run check-coverage"
+    }
   },
   "repository": {
     "type": "git",
@@ -22,6 +29,7 @@
   "homepage": "https://github.com/EveryMundo/array-helpers#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "ghooks": "^2.0.2",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.0.5"
   }
