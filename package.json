@@ -4,16 +4,18 @@
   "description": "Helpers to handle array operations in a more elegant way",
   "main": "index.js",
   "scripts": {
+    "check-lint": "eslint *.js lib/*.js test/*.js routes/*.js",
     "cover": "istanbul cover _mocha",
+    "fix-lint": "eslint --fix *.js classes/*.js test/*.js routes/*.js",
     "test": "mocha"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EveryMundo/array-helpers.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["nodejs", "arrays"],
+  "author": "Daniel Santana <github@danielsantana.net>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/EveryMundo/array-helpers/issues"
   },
