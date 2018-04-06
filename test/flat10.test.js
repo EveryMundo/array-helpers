@@ -28,6 +28,7 @@ describe('flat10', () => {
     const array = [];
 
     function pustArgsToArray() {
+      // eslint-disable-next-line prefer-rest-params
       array.push(arguments);
     }
 
