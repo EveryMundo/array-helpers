@@ -12,6 +12,16 @@ class List extends Array {
   flatten() {
     return List.from(flat10(this));
   }
+
+  unique() {
+    const o = new List();
+    for (let i = 0, l = this.length; i < l; i++) {
+      const item = this[i];
+      if (!o.includes(item)) o.push(item);
+    }
+
+    return o;
+  }
 }
 
 /**

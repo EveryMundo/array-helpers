@@ -113,5 +113,15 @@ describe('List', () => {
         expect(result).to.deep.equal(expected);
       });
     });
+
+    context('instance.unique()', () => {
+      it('should return the first item of the list', () => {
+        const instance = new List(1, 1, 3, 3, 5, 5, 7, 7, 9, 9);
+        const expected = new List(1, 3, 5, 7, 9);
+        const result   = instance.unique();
+
+        expect(result).to.deep.equal(expected);
+      });
+    });
   });
 });

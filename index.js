@@ -2,7 +2,7 @@
 
 const
   List       = require('./classes/list'),
-  { typeOf } = require('./typeOf'),
+  { typeOf } = require('./type-of'),
   { flat10 } = require('./flat10');
 
 module.exports = {
