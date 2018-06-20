@@ -112,6 +112,22 @@ describe('List', () => {
 
         expect(result).to.deep.equal(expected);
       });
+
+      it('should return the first item of the list', () => {
+        const array = [
+          [
+            ['2018-06-10', '2018-06-11'],
+            ['2018-07-01', '2018-07-01']],
+          [
+            ['2018-06-10', '2018-06-11'],
+            ['2018-07-01', '2018-07-01']],
+        ];
+        const instance = List.from(array);
+        const expected = new List('2018-06-10', '2018-06-11', '2018-07-01', '2018-07-01', '2018-06-10', '2018-06-11', '2018-07-01', '2018-07-01');
+        const result   = instance.flatten();
+
+        expect(result).to.deep.equal(expected);
+      });
     });
 
     context('instance.unique()', () => {
