@@ -4,13 +4,17 @@
   "description": "Helpers to handle array operations in a more elegant way",
   "main": "index.js",
   "scripts": {
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "check-lint": "eslint *.js lib/*.js test/*.js routes/*.js",
-    "cover": "istanbul cover _mocha",
-    "fix-lint": "eslint --fix *.js classes/*.js test/*.js routes/*.js",
-    "test": "mocha"
+    "cover": "LOG_LEVEL=trace nyc -x test --reporter=lcov --reporter=text mocha test --recursive",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "check-lint": "standard --env=mocha *.js lib/*.js spec/*.js spec/lib/*.js",
+    "fix-lint": "standard --env=mocha --fix *.js lib/*.js test/*.js",
+    "test": "mocha $@"
   },
   "config": {
+    "standard": {
+      "environment": ["mocha"],
+      "env": "mocha"
+    },
     "ghooks": {
       "pre-commit": "npm run check-lint && npm test",
       "pre-push": "npm run cover && npm run check-coverage"
@@ -31,9 +35,10 @@
   },
   "homepage": "https://github.com/EveryMundo/array-helpers#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "ghooks": "^2.0.2",
-    "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^5.0.5"
+    "chai": "^4.2.0",
+    "ghooks": "^2.0.4",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "standard": "^12.0.1"
   }
 }
