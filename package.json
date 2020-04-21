@@ -16,6 +16,9 @@
       "pre-push": "npm run cover && npm run check-coverage"
     }
   },
+  "standard": {
+    "env": ["mocha"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EveryMundo/array-helpers.git"
