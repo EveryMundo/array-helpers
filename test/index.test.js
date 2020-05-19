@@ -6,7 +6,7 @@ describe('index', () => {
 
   it('should export expected keys', () => {
     const res = Object.keys(index)
-    const expected = ['List', 'typeOf', 'flat10', 'inChunks']
+    const expected = ['List', 'typeOf', 'flat10', 'chunksGenerator', 'inChunks']
 
     expect(res).to.deep.equal(expected)
   })
@@ -16,6 +16,7 @@ describe('index', () => {
       List: require('../classes/list'),
       typeOf: require('../type-of').typeOf,
       flat10: require('../flat10').flat10,
+      chunksGenerator: require('../chunks-generator'),
       inChunks: require('../in-chunks')
     }
 
