@@ -10,7 +10,7 @@ describe('chunksGenerator', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
       const caller = () => Array.from(chunksGenerator(array, 0))
 
-      expect(caller).to.throw(Error, 'n[0] < 1')
+      expect(caller).to.throw(Error, 'Chunk Length has to be a valid Number greater than 0')
     })
   })
 
@@ -30,6 +30,17 @@ describe('chunksGenerator', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
       const result = Array.from(chunksGenerator(array, 2))
       const expected = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 0]]
+
+      expect(result).to.deep.equal(expected)
+      expect(result[0]).to.not.equal(array)
+    })
+  })
+
+  context('array.length vs chunk size results in uneven last item', () => {
+    it('should return the last item smaller', () => {
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1000]
+      const result = Array.from(chunksGenerator(array, 2))
+      const expected = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 0], [1000]]
 
       expect(result).to.deep.equal(expected)
       expect(result[0]).to.not.equal(array)
