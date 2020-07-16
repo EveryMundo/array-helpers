@@ -1,6 +1,11 @@
 # @everymundo/array-helpers
 Helpers to handle array operations in a more elegant way
 
+## Instalation
+```sh
+npm i @everymundo/array-helpers
+```
+
 ## Helper Functions
 
 * flat10
