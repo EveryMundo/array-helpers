@@ -27,10 +27,9 @@ describe('inChunks', () => {
 
   context('array.length < chunk size', () => {
     it('should return the proper chunks', () => {
-      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 'x']
       const result = inChunks(array, 2)
-      const expected = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 0]]
-
+      const expected = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 0], ['x']]
       expect(result).to.deep.equal(expected)
       expect(result[0]).to.not.equal(array)
     })
