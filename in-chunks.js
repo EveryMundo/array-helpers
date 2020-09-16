@@ -12,9 +12,13 @@ function inChunks (a, chunkLen) {
   const res = new constructor(numberOfChunks)
 
   for (let i = 0; i < numberOfChunks; i++) {
-    res[i] = new constructor(+chunkLen)
+    let currentChunkLength = chunkLen
+    if ((i * chunkLen + chunkLen) > a.length) {
+      currentChunkLength = (i * chunkLen + chunkLen) - a.length
+    }
+    res[i] = new constructor(+currentChunkLength)
 
-    for (let ix, j = 0; j < chunkLen && (ix = i * chunkLen + j) < a.length; j++) {
+    for (let ix, j = 0; j < currentChunkLength && (ix = i * chunkLen + j) < a.length; j++) {
       res[i][j] = a[ix]
     }
   }
