@@ -1,6 +1,6 @@
 {
   "name": "@everymundo/array-helpers",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Helpers to handle array operations in a more elegant way",
   "main": "index.js",
   "scripts": {
