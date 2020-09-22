@@ -25,6 +25,33 @@ describe('chunksGenerator', () => {
     })
   })
 
+  context('input type is a Int32Array', () => {
+    it('should return 2 chunk with a similar array but not the same array', () => {
+      const list = new Int32Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11])
+      const result = Array.from(chunksGenerator(list, 5))
+      const expected = [new Int32Array([1, 2, 3, 4, 5]), new Int32Array([6, 7, 8, 9, 0]), new Int32Array([11])]
+
+      expect(result).to.deep.equal(expected)
+      expect(result[0]).to.be.instanceof(Int32Array)
+      expect(result[1]).to.be.instanceof(Int32Array)
+      expect(result[2]).to.be.instanceof(Int32Array)
+    })
+  })
+
+  context('input type is a List', () => {
+    it('should return 2 chunk with a similar array but not the same array', () => {
+      const List = require('../classes/list')
+      const list = new List(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+      const result = List.from(chunksGenerator(list, 5))
+      const expected = new List(new List(1, 2, 3, 4, 5), new List(6, 7, 8, 9, 0))
+
+      expect(result).to.deep.equal(expected)
+      expect(result[0]).to.not.equal(list)
+      expect(result[0]).to.be.instanceof(List)
+      expect(result[1]).to.be.instanceof(List)
+    })
+  })
+
   context('array.length < chunk size', () => {
     it('should return the proper chunks', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
