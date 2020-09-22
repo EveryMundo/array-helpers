@@ -10,7 +10,7 @@ describe('inChunks', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
       const caller = () => inChunks(array, 0)
 
-      expect(caller).to.throw(Error, 'n[0] < 1')
+      expect(caller).to.throw(Error, 'Chunk Length has to be a valid Number greater than 0')
     })
   })
 
