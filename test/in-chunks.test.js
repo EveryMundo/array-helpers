@@ -46,4 +46,16 @@ describe('inChunks', () => {
       expect(result[0]).to.not.equal(list)
     })
   })
+
+  context('list.length == total ', () => {
+    it('total should equals the length of the original list', () => {
+      const list = List.ify(Array.apply(null, Array(103)).map(function (x, i) { return i; }))
+      const result = list.inChunksOf(21)
+      let total = 0;
+      result.forEach((element) => {
+        total += element.length
+      })
+      expect(total).to.deep.equal(list.length)
+    })
+  })
 })
